@@ -4,6 +4,6 @@
 sort relaunched.txt -V > out.txt
 uniq out.txt relaunched.txt
 cat relaunched.txt | awk -vORS=, '{ print $1 }' | sed 's/,$/\n/' > out.txt
-echo "sbatch --array="`cat out.txt` " "  #`ls *.slurm`
+echo "sbatch --array="`cat out.txt` " "  `ls *.slurm`
 rm relaunched.txt
 rm out.txt
