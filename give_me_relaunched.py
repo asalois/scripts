@@ -5,7 +5,11 @@ in_nums = pandas.read_csv('good_jobs.csv')
 
 
 in_x = int(sys.argv[1])
-for i in range(in_x + 1):
+in_start = int(sys.argv[2])
+for i in range(in_start, in_x + 1):
     if i != 0:
         if not (i in in_nums.values):
-            print(i)
+            if in_start != 1:
+                print(i - in_start + 1 )
+            else:
+                print(i)
