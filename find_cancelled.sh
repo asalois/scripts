@@ -7,6 +7,9 @@ echo "sbatch --array="`cat out.txt` " qsmf_test_1.slurm"
 python3 ~/scripts/give_me_relaunched.py 1512 1001 >  found.txt
 cat found.txt | awk -vORS=, '{ print $1 }' | sed 's/,$/\n/' > out.txt
 echo "sbatch --array="`cat out.txt` " qsmf_test_2.slurm"
+(echo "QdB, laserPowerdBmArray, segmentLength_1, percComp, fiberAeff_1, fiberAeff_2, fiberAlphadB_1, fiberAlphadB_2" && cat qsmf_output_*) > qsmf_output.csv
+python3 ~/scripts/make_excel.py 
+rm qsmf_output.csv 
 rm out.txt
 rm found.txt
 
