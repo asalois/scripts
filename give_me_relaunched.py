@@ -9,7 +9,7 @@ in_start = int(sys.argv[2])
 for i in range(in_start, in_x + 1):
     if i != 0:
         if not (i in in_nums.values):
-            if in_start != 1:
-                print(i - in_start + 1 )
+            if i > 1000 :
+                print(i - 1000 + 1)
             else:
                 print(i)

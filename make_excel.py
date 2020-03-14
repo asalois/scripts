@@ -11,7 +11,7 @@ writer = pd.ExcelWriter('qsmf_output.xlsx', engine='xlsxwriter')
 # Write each dataframe to a different worksheet.
 for n, df in enumerate(comp):
     x = n*20
-    df = df.sort_values([' segmentLength_1'])
+    df = df.sort_values([' segmentLength_1', ' laserPowerdBmArray'])
     df.to_excel(writer,'PercComp%s' % x)
 
 
