@@ -4,33 +4,40 @@ import pandas
 in_nums = pandas.read_csv('good_jobs.csv')
 
 
-in_x = int(sys.argv[1])
+in_x = int(sys.argv[1]) + 1
 in_start = int(sys.argv[2])
 num_grab = int(sys.argv[3])
 sleep_time = int(sys.argv[4])
 j = 0
 num_list = []
+over = False
+print_2 = False
+def print_list(i):
+    print("sbatch --array=", end = '')
+    print(*num_list, sep = ",", end = '')
+    if i > 1000 + num_grab or print_2:
+        print(" qsmf_test_2.slurm")
+    else:
+        print(" qsmf_test_1.slurm")
+    print("sleep", str(sleep_time))
+
 print("#!/bin/bash")
 print("# to relaunch jobs")
-for i in range(in_start, in_x + 1):
-    if j != num_grab + 1:
-        if i != 0:
-            if not (i in in_nums.values):
-                if i > 1000:
-                    num_list.append(i - 1000 + 1)
-                else:
-                    num_list.append(i)
-                j += 1
-    else:
-        if i > 1000 +1 :
-            print("sbatch --array=", end = '')
-            print(*num_list, sep = ",", end = '')
-            print(" qsmf_test_2.slurm")
-        else:    
-            print("sbatch --array=", end = '')
-            print(*num_list, sep = ",", end = '')
-            print(" qsmf_test_1.slurm")
-        print("sleep", str(sleep_time))
+for i in range(in_start, in_x):
+    if not (i in in_nums.values):
+        if i > 1000 and i <= (1000 + num_grab) and over == False:
+            over = True
+            j = num_grab
+            print_list(i)
+            num_list = []
+            print_2 = True
+        if i > 1000:
+            num_list.append(i - 1000)
+        else:
+            num_list.append(i)
+        j += 1
+    if j > num_grab or (i == (in_x - 1) and num_list):
+        print_list(i)
         j = 0
         num_list = []
 print("echo Done")
