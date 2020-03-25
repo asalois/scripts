@@ -12,7 +12,7 @@ writer = pd.ExcelWriter('qsmf_output.xlsx', engine='xlsxwriter')
 for n, df in enumerate(comp):
     x = n*20
     df = df.sort_values([' segmentLength_1', ' laserPowerdBmArray'])
-    df.to_excel(writer,'PercComp%s' % x)
+    df.to_excel(writer,'per_c_comp_%s' % x, index=False)
 
 
 # Close the Pandas Excel writer and output the Excel file.
