@@ -3,15 +3,19 @@ import sys
 import pandas
 in_nums = pandas.read_csv('good_jobs.csv')
 
-
+# input arguments from cli
 in_x = int(sys.argv[1]) + 1
 in_start = int(sys.argv[2])
 num_grab = int(sys.argv[3])
 sleep_time = int(sys.argv[4])
+
+
 j = 0
 num_list = []
 over = False
 print_2 = False
+
+# print list function to print lists and append which file needs to be run
 def print_list(i):
     print("sbatch --array=", end = '')
     print(*num_list, sep = ",", end = '')
@@ -21,6 +25,7 @@ def print_list(i):
         print(" qsmf_test_1.slurm")
     print("sleep", str(sleep_time))
 
+# beggining of bash script
 print("#!/bin/bash")
 print("# to relaunch jobs")
 for i in range(in_start, in_x):
