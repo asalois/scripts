@@ -5,4 +5,3 @@ python3 ~/scripts/give_me_relaunched.py 1512 1 0 1 >  relaunch.sh # write the ou
 chmod +x relaunch.sh # make executable 
 (echo "QdB, laserPowerdBmArray, segmentLength_1, percComp, fiberAeff_1, fiberAeff_2, fiberAlphadB_1, fiberAlphadB_2" && cat qsmf_output_*) > qsmf_output.csv # make all the csv files one
 python3 ~/scripts/make_excel.py 
-rm qsmf_output.csv # remove extra files
