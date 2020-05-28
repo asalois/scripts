@@ -4,7 +4,7 @@
 python3 ~/scripts/give_me_relaunched.py $1 1 $1 1 $2 >  relaunch.sh # write the output to relaunch.sh
 chmod +x relaunch.sh # make executable
 rm good_jobs.csv
-(echo "QdB, laserPowerdBmArray, segmentLength_1, percComp, fiberAeff_1, fiberAeff_2, fiberAlphadB_1, fiberAlphadB_2" && cat qsmf_output_*) > qsmf_output.csv # make all the csv files one
+(echo "QdB, laserPowerdBmArray, segmentLength_1, percComp, fiberAeff_1, fiberAeff_2, fiberAlphadB_1, fiberAlphadB_2, span" && cat qsmf_output_*) > qsmf_output.csv # make all the csv files one
 python3 ~/scripts/make_excel.py 
 mv qsmf_output.csv ../
 mv qsmf_output.xlsx ../
