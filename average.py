@@ -2,8 +2,9 @@
 import sys
 import pandas
 in_nums = pandas.read_csv('run_time.csv')
-mean = in_nums["time"].mean() /3600
-median = in_nums["time"].median() / 3600
-max_time = in_nums["time"].max() / 3600
-min_time = in_nums["time"].min() / 3600
-print("mean= {:0.3f}hrs median= {:0.3f}hrs max= {:0.3f}hrs min= {:0.3f}hrs".format(mean, median, max_time, min_time))
+mean = in_nums["time"].mean() /60
+median = in_nums["time"].median() / 60
+max_time = in_nums["time"].max() / 60
+min_time = in_nums["time"].min() / 60
+num = in_nums.size
+print("mean= {:0.3f}mins median= {:0.3f}mins max= {:0.3f}mins min= {:0.3f}mins num={:g}".format(mean, median, max_time, min_time, num))
