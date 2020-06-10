@@ -3,4 +3,7 @@ import pandas
 df = pandas.read_csv('jobs.csv')
 
 # beggining of bash script
-print(df['jobs'].max() + 1)
+if df['jobs'].max() < 1:
+    print(1)
+else:
+    print(df['jobs'].max() + 1)
